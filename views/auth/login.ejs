@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+<% title = 'Login' %>
+
+<div class="page-container">
+    <div class="form-card">
+        <h2 class="form-title">Welcome Back</h2>
+        <p class="form-subtitle">Login to your account</p>
+
+        <form action="/login" method="POST">
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                <p class="mt-2">Don't have an account? <a href="/signup">Sign up</a></p>
+            </div>
+        </form>
+    </div>
+</div>

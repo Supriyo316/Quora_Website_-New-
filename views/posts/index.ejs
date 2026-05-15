@@ -1,0 +1,59 @@
+<% layout('layouts/boilerplate') %>
+<% title = 'All Posts' %>
+
+<div class="page-container">
+    <div class="page-header">
+        <h1>Community Feed</h1>
+        <p>Explore questions and answers shared by the community.</p>
+    </div>
+    <hr class="divider" />
+
+    <div class="cta-bar">
+        <span class="posts-count"><%= posts.length %> post<%= posts.length !== 1 ? 's' : '' %> shared</span>
+        <% if (currentUser) { %>
+            <a href="/posts/new" class="btn btn-primary">
+                <span class="btn-icon">＋</span> New Post
+            </a>
+        <% } %>
+    </div>
+
+    <% if (posts.length === 0) { %>
+        <div class="empty-state">
+            <span class="empty-icon">💬</span>
+            <h3>No posts yet</h3>
+            <p>Be the first to share something with the community.</p>
+        </div>
+    <% } %>
+
+    <% for(let post of posts) { %>
+        <div class="post-card">
+            <div class="post-meta">
+                <div class="avatar"><%= post.author.username.charAt(0).toUpperCase() %></div>
+                <div>
+                    <div class="post-username">
+                        <%= post.author.username %> 
+                        <span>· <%= post.createdAt.toLocaleDateString() %></span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="post-content"><%= post.content %></p>
+
+            <div class="post-actions">
+                <a href="/posts/<%= post._id %>" class="btn btn-outline">
+                    <span>👁</span> View
+                </a>
+                <% if (currentUser && post.author._id.equals(currentUser._id)) { %>
+                    <a href="/posts/<%= post._id %>/edit" class="btn btn-outline">
+                        <span>✏️</span> Edit
+                    </a>
+                    <form method="post" action="/posts/<%= post._id %>?_method=DELETE" class="inline-form">
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('Delete this post?')">
+                            <span>🗑</span> Delete
+                        </button>
+                    </form>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+</div>

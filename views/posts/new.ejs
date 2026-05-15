@@ -1,0 +1,26 @@
+<% layout('layouts/boilerplate') %>
+<% title = 'New Post' %>
+
+<div class="page-container">
+    <a href="/posts" class="back-link">← Back to Feed</a>
+
+    <div class="form-card">
+        <h2 class="form-title">Share a Post</h2>
+        <p class="form-subtitle">What's on your mind? Ask a question or share knowledge.</p>
+
+        <form method="post" action="/posts">
+            <div class="mb-3">
+                <label class="form-label" for="content">Your Post</label>
+                <textarea class="form-textarea" id="content" name="content" 
+                          placeholder="Write your question or thought here…" required></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn btn-primary btn-lg" type="submit">
+                    <span class="btn-icon">✦</span> Publish Post
+                </button>
+                <a href="/posts" class="btn btn-outline btn-lg">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

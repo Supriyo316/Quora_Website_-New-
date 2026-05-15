@@ -1,0 +1,25 @@
+<% layout('layouts/boilerplate') %>
+<% title = 'Edit Post' %>
+
+<div class="page-container">
+    <a href="/posts/<%= post._id %>" class="back-link">← Back to Post</a>
+
+    <div class="form-card">
+        <h2 class="form-title">Edit Post</h2>
+        <p class="form-subtitle">Update your content below — changes are immediate.</p>
+
+        <form method="post" action="/posts/<%= post._id %>?_method=PUT">
+            <div class="mb-3">
+                <label class="form-label" for="content">Your Post</label>
+                <textarea class="form-textarea" id="content" name="content" required><%= post.content %></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button class="btn btn-primary btn-lg" type="submit">
+                    <span class="btn-icon">✦</span> Save Changes
+                </button>
+                <a href="/posts/<%= post._id %>" class="btn btn-outline btn-lg">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

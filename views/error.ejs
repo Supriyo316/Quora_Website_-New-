@@ -1,0 +1,11 @@
+<% layout('layouts/boilerplate') %>
+<% title = 'Error' %>
+
+<div class="page-container">
+    <div class="empty-state">
+        <span class="empty-icon">⚠️</span>
+        <h3>Error <%= error.statusCode %></h3>
+        <p><%= error.message %></p>
+        <a href="/posts" class="btn btn-primary mt-3">Back to Home</a>
+    </div>
+</div>
